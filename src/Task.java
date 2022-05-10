@@ -29,7 +29,7 @@ public class Task {
     
     /**
      * The default constructor makes use of {@code inverse transform sampling}
-     * to randomly generate possion-distributed arrival and burst times.
+     * to randomly generate a possion-distributed arrival and burst time.
      * <p> The processID increments with the static {@code count} variable.
      */
     Task() {

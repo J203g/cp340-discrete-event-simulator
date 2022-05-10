@@ -4,12 +4,13 @@
  * @since 0.9 {@code May 9th}
  * @author Joshua Levin
  */
-public class SRT {
+public class SRT2 {
     /**
-     * Simulates the prescribed algorithm on the set of tasks.
+     * This is a new kind of algorithm that runs like {@link SRT}, but uses the time quantum of {@link RR}
      * @param queue The set of tasks to be simulated.
+     * @param quantum The time limit for a task in the CPU.
      */
-    public static void EventSim(Schedule queue) {
+    public static void EventSim(Schedule queue, int quantum) {
         Schedule tasks = new Schedule(queue);
         Schedule ready = new Schedule(0, Task::burstT);
         int simClock = 0;

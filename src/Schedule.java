@@ -13,7 +13,7 @@ public class Schedule extends PriorityQueue<Task> {
 
     /**
      * This constructor populates the schedule with a provided queue.
-     * @param queue The set of tasks to add.
+     * @param queue The set of tasks to add
      */
     public Schedule(Collection<Task> queue) {
         super(queue);
@@ -43,7 +43,7 @@ public class Schedule extends PriorityQueue<Task> {
 
     /**
      * The {@code Midterm} method recreates the midterm test case.
-     * @return A schedule containing the five midterm tasks.
+     * @return A schedule containing the five midterm tasks
      */
     public static Schedule Midterm() {
         Schedule midterm = new Schedule(0, Task::arrivalT);
@@ -58,7 +58,7 @@ public class Schedule extends PriorityQueue<Task> {
     /**
      * Returns whether the next task would arrive by the given time.
      * Returns false if the queue is empty.
-     * @param period The period of time a task can enter the CPU.
+     * @param period The period of time a task can enter the CPU
      * @return {@code true} if the next task arrives during the period, or
      *        {@code false} if the otherwise or if the queue is empty
      */
@@ -80,7 +80,7 @@ public class Schedule extends PriorityQueue<Task> {
     /**
      * The {@code report} method sums the simulation times of a
      * {@code Schedule} and prints its average times to the screen.
-     * @param name The name of the scheduling method.
+     * @param name The name of the scheduling method
      */
     public void report(String name) {
         Schedule report = new Schedule(this, Task::processID);
@@ -102,6 +102,7 @@ public class Schedule extends PriorityQueue<Task> {
             t.turn = 0;
             t.wait = 0;
             t.resp = -1; // reset variables for next algorithm
+            t.burst = t.exe;
         }
 
         // print resulting averages
@@ -116,9 +117,9 @@ public class Schedule extends PriorityQueue<Task> {
     public void show() {
         Schedule queue = new Schedule(this, Task::processID);
         System.out.println("\n   TASK SCHEDULE");
-        System.out.println(" ID  ARRIVAL  BURST");
-        while (!queue.isEmpty()) {
-            Task t = queue.poll();
+        System.out.println  (" ID  ARRIVAL  BURST");
+        
+        while (!queue.isEmpty()) { Task t = queue.poll();
             System.out.printf("%3d   %3d     %3d\n",
                             t.process, t.arrival, t.burst);
         }

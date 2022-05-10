@@ -25,12 +25,12 @@
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        int count = 150;
-        int quantum = 5;
-        Task.lambdA = 4.2; // default 4.2, but can be anything you want
-        Task.lambdB = 8.6; // default 8.6, but can be anything you want
+        int count = 150;   // default 150, but can be anything you want
+        int quantum = 5;   // default 5, but can be anything you want
+        Task.lambdA = 10;  // default 10, but can be anything you want
+        Task.lambdB = 20;  // default 20, but can be anything you want
         
-        /* MIDTERM TASKS - the default test case, uncomment to test
+        //* MIDTERM TASKS - the default test case, uncomment to test
         Schedule queue = Schedule.Midterm(); /*/
 
         // RANDOM TASKS - for post-development analysis
@@ -41,9 +41,12 @@ public class Main {
         System.out.println("\nSimulation start!");
 
         FCFS.EventSim(queue);           // 1) First Come First Serve
-        RR .EventSim(queue, quantum);   // 2) Round Robin
-        SJF.EventSim(queue);            // 3) Shortest Job First
-        SRT.EventSim(queue);            // 4) Shortest Remaining Time
+        RR.EventSim(queue, quantum);    // 2) Round Robin
+        RR.EventSim(queue, quantum*2);  // 3) Round Robin (longer quantum)
+        SJF.EventSim(queue);            // 4) Shortest Job First
+        SRT.EventSim(queue);            // 5) Shortest Remaining Time
+        
+        SRT2.EventSim(queue, quantum);  // 6) SRT but with a time quantum
 
         System.out.println("\nSimulation over!\n");
     }//*/

@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class RR {
     /**
      * Simulates the prescribed algorithm on the set of tasks.
-     * @param queue The set of tasks to be simulated.
-     * @param quantum The time limit for a task in the CPU.
+     * @param queue The set of tasks to be simulated
+     * @param quantum The time limit for a task in the CPU
      * */
     public static void EventSim(Schedule queue, int quantum) {
         Schedule tasks = new Schedule(queue);

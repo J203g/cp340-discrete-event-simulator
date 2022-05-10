@@ -8,7 +8,7 @@
 public class SJF {
     /**
      * Simulates the prescribed algorithm on the set of tasks.
-     * @param tasks The set of tasks to be simulated.
+     * @param tasks The set of tasks to be simulated
      */
     public static void EventSim(Schedule queue) {
         Schedule tasks = new Schedule(queue);

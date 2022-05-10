@@ -7,8 +7,8 @@
  */
 public class FCFS {
     /**
-     * Simulates the prescribed algorithm on the set of tasks.
-     * @param queue The set of tasks to be simulated.
+     * Simulates the prescribed algorithm on the set of tasks
+     * @param queue The set of tasks to be simulated
      */
     public static void EventSim(Schedule queue) {
         int simClock = 0;
