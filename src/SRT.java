@@ -33,9 +33,9 @@ public class SRT {
                 simClock = Math.max(nt.arrival, simClock);  // update clock
                 
                 if (nt.burst < t.burst) {
-                    ready.add(t);               // put back in the queue
-                    t = nt;                     // 
-                } else ready.add(nt);           // or put back other task
+                    ready.add(t);               // put old back in the queue
+                    t = nt;                     // replace old with new
+                } else ready.add(nt);           // else put back new task
             }
 
             if (t.resp < 0) t.resp = simClock;  // set response time

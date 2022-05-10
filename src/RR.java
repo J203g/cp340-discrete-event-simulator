@@ -16,32 +16,30 @@ public class RR {
     public static void EventSim(Schedule queue, int quantum) {
         Schedule tasks = new Schedule(queue);
         ArrayList<Task> ready = new ArrayList<>();
-        ArrayList<Task> fin = new ArrayList<>();
         int simClock = 0;
-        boolean done;
+        boolean fin;                  // whether the tasks has finished or not
         
-        ready.add(tasks.poll());
+        ready.add(tasks.poll());      // add first task
         
         while (!ready.isEmpty())         // PREEMPTIVE MAIN LOOP
         {
             Task t = ready.get(0);       // schedule task & update clock
             simClock = Math.max(t.arrival, simClock);
 
-            if (t.resp < 0)              // set response time only if not set
-                t.resp = simClock - t.arrival;
+            if (t.resp < 0) t.resp = simClock; // set response time only if not set
 
             if (t.burst > quantum) {     // apply execution time -> unfinished
                 simClock += quantum;            // update clock
                 t.burst -= quantum;             // update burst
-                done = false;                   // continue
+                fin = false;                    // continue
             }
             else {                       // apply execution time -> finished
                 simClock += t.burst;            // update clock
                 t.comp = simClock;              // set turnaround time
                 t.turn = t.comp - t.arrival;    // set completion time
+                t.resp = t.resp - t.arrival;    // set response time
                 t.wait = t.turn - t.exe;        // set wait time
-                t.burst = t.exe;                // reset burst time
-                done = fin.add(t);              // mark task finished
+                fin = true;                     // mark task finished
             }
             
             ready.remove(t);             // remove task from the CPU
@@ -49,7 +47,7 @@ public class RR {
             while(tasks.nextBefore(simClock))
                 ready.add(tasks.poll()); // fetch all ready tasks
             
-            if (!done) ready.add(t);     // add back of queue if unfinished
+            if (!fin) ready.add(t);      // add back of queue if unfinished
         }
 
         queue.report("ROUND ROBIN"); // print report

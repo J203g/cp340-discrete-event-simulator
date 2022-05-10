@@ -98,11 +98,11 @@ public class Schedule extends PriorityQueue<Task> {
             RT += t.resp;
             /*System.out.printf(" %3d\t%3d\t%3d\t%3d\n",
                 t.comp, t.turn, t.wait, t.resp);//*/
+            t.burst = t.exe;
             t.comp = 0;
             t.turn = 0;
             t.wait = 0;
             t.resp = -1; // reset variables for next algorithm
-            t.burst = t.exe;
         }
 
         // print resulting averages

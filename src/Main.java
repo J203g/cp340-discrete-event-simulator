@@ -30,7 +30,7 @@ public class Main {
         Task.lambdA = 10;  // default 10, but can be anything you want
         Task.lambdB = 20;  // default 20, but can be anything you want
         
-        //* MIDTERM TASKS - the default test case, uncomment to test
+        /* MIDTERM TASKS - the default test case, uncomment to test
         Schedule queue = Schedule.Midterm(); /*/
 
         // RANDOM TASKS - for post-development analysis
@@ -45,8 +45,7 @@ public class Main {
         RR.EventSim(queue, quantum*2);  // 3) Round Robin (longer quantum)
         SJF.EventSim(queue);            // 4) Shortest Job First
         SRT.EventSim(queue);            // 5) Shortest Remaining Time
-        
-        SRT2.EventSim(queue, quantum);  // 6) SRT but with a time quantum
+        SRTQ.EventSim(queue, quantum);  // 6) SRT but with a time quantum
 
         System.out.println("\nSimulation over!\n");
     }//*/
